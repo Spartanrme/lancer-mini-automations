@@ -1,0 +1,31 @@
+{
+  "id": "lancer-mini-automations",
+  "title": "Lancer Mini Automations",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11",
+    "maximum": "11"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "lancer",
+        "type": "system",
+        "compatibility": {}
+      }
+    ]
+  },
+  "authors": [
+    {
+      "name": "Spartanrme",
+      "discord": "Spartanrme",
+      "email": "spartanrme@gmail.com",
+      "url": "https://github.com/Spartanrme",
+      "flags": {}
+    }
+  ],
+  "esmodules": [
+    "scripts/module.js"
+  ]
+}
