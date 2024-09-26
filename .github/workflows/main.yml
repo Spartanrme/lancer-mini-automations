@@ -1,4 +1,4 @@
-name: my-module CI
+name: lancer-mini-automations CI
 
 on: [push]
 
