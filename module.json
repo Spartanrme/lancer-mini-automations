@@ -27,5 +27,11 @@
   ],
   "esmodules": [
     "scripts/module.js"
-  ]
+  ],
+  "url": "#{URL}#",
+  "readme": "https://github.com/Spartanrme/lancer-mini-automations/blob/main/README.md",
+  "bugs": "https://github.com/Spartanrme/lancer-mini-automations/issues",
+  "changelog": "https://github.com/Spartanrme/lancer-mini-automations/blob/main/CHANGELOG.md",
+  "download": "#{DOWNLOAD}#",
+  "manifest": "https://github.com/Spartanrme/lancer-mini-automations/releases/latest/download/module.json"
 }
