@@ -1,4 +1,4 @@
-import { changeWeaponProfile } from "./attacks";
+import { changeWeaponProfile } from "./attacks.js";
 
 Hooks.once("lancer.registerFlows", (flowSteps, flows) => {
   flowSteps.set("changeWeaponProfile", changeWeaponProfile);
