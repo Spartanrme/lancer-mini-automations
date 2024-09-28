@@ -20,10 +20,9 @@
   "authors": [
     {
       "name": "Spartanrme",
-      "discord": "Spartanrme",
       "email": "spartanrme@gmail.com",
       "url": "https://github.com/Spartanrme",
-      "flags": {}
+      "discord": "Spartanrme"
     }
   ],
   "esmodules": [
@@ -34,5 +33,18 @@
   "bugs": "https://github.com/Spartanrme/lancer-mini-automations/issues",
   "changelog": "https://github.com/Spartanrme/lancer-mini-automations/blob/main/CHANGELOG.md",
   "download": "#{DOWNLOAD}#",
-  "manifest": "https://github.com/Spartanrme/lancer-mini-automations/releases/latest/download/module.json"
+  "manifest": "https://github.com/Spartanrme/lancer-mini-automations/releases/latest/download/module.json",
+  "packs": [
+    {
+      "name": "lancer-mini-automation-macros",
+      "label": "Lancer-Mini-Automation-Macros",
+      "path": "packs/lancer-mini-automation-macros",
+      "type": "Macro",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "lancer"
+    }
+  ]
 }
