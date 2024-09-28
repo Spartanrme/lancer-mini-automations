@@ -6,19 +6,19 @@ ChatMessage.create({
     actor: game.macros.getName("Get-Speaker").execute()
 }),
 */
-async function getSpeaker(){
+export async function getSpeaker(){
     try{
         let ownerObject = await canvas.tokens.controlled[0].actor.ownership
             //console.log(ownerObject)
             let ownerIDCode = ""
             for (let [key, value] of Object.entries(ownerObject)) {
                 if (key == "default") {
-                    console.log("Default. Ignoring...")
+                    console.debug("Default. Ignoring...")
                 } else if (game.users.filter(u => u.isGM).map(u => u.id).includes(key)) { 
-                    console.log("GM user. Ignoring...")
+                    console.debug("GM user. Ignoring...")
                 } else {
                     if (value == 3) {
-                        console.log(`${key} is the ID of the owner.`)
+                        console.debug(`${key} is the ID of the owner.`)
                         ownerIDCode = key
                     }
                 }

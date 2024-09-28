@@ -34,8 +34,7 @@ export function registerSettings() {
         hint: "Modify name and size of a die to roll everytime a round in combat starts.",
         icon: "fas fa-bars",               // A Font Awesome icon used in the submenu button
         type: roundStartRollFormApplication,   // A FormApplication subclass
-        restricted: true,                   // Restrict this submenu to gamemaster only?
-        requiresReload: true
+        restricted: true                   // Restrict this submenu to gamemaster only?
     });
 
     game.settings.register('lancer-mini-automations', 'roundStartEnable', {
@@ -44,8 +43,7 @@ export function registerSettings() {
         scope: 'world',
         config: false,
         type: Boolean,
-        default: false,
-        requiresReload: true,
+        default: false
     });
 
     game.settings.register('lancer-mini-automations', 'roundStartRollName', {

@@ -8,6 +8,7 @@ import { runLoadoutDie } from "./macros/loadout_die.js";
 let socket; // pass this to functions that require users to request GM to update tokens
 
 Hooks.once("socketlib.ready", () => {
+  console.log('lancer-mini-automations | Registering Sockets');
 	socket = socketlib.registerModule("lancer-mini-automations");
 	socket.register("updateToken", updateToken);
 	socket.register("updateTokenOwnership", updateTokenOwnership);
@@ -30,6 +31,7 @@ Hooks.on('init', function () { console.log('lancer-mini-automations | Init'); })
 
 Hooks.on('ready', function () {
   console.log('lancer-mini-automations | exposing macro names.');
+  game.modules.get('lancer-mini-automations').socket = socket;
   game.modules.get('lancer-mini-automations').exposed = {
       runLoadoutDie
   };

@@ -1,9 +1,14 @@
 import { getSpeaker } from "./macro_helpers.js";
 
-export async function runLoadoutDie(socket){
+export async function runLoadoutDie(){
     // Cancel the macro if no token is selected
     if(canvas.tokens.controlled.length != 1)
         return ui.notifications.error("Select 1 token. You have " + canvas.tokens.controlled.length + " selected.");
+
+    let token = canvas.tokens.controlled[0];
+
+    // Get the current socket
+    let socket = game.modules.get('lancer-mini-automations').socket;
 
     // Icon names and paths
     let dieId = "loadout_die";
@@ -11,7 +16,7 @@ export async function runLoadoutDie(socket){
 
     // Set icon if not set
     if(!token.document.hasStatusEffect(dieId)){
-        await game.macros.getName("toggleCondition").execute({tokenId:token.id, condition:dieId, replace:false});
+        await socket.executeAsGM("updateTokenCondition", token.id, dieId, false);
         await EffectCounter.findCounter(token, diePath).setValue(6);
     }
 
@@ -45,7 +50,7 @@ export async function runLoadoutDie(socket){
             content: msgContent 
         });
     }else{
-        await game.macros.getName("toggleCondition").execute({tokenId:token.id, condition:dieId, replace:false});
+        //await socket.executeAsGM("updateTokenCondition", token.id, dieId, false);
         await EffectCounter.findCounter(token, diePath).setValue(6);
         // Chat Message
         description = "Reroll 1 attack, check, or save, though the second result must be kept.";
