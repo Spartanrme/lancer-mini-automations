@@ -2,6 +2,7 @@ import { updateToken, updateTokenCondition, updateTokenOwnership } from "./updat
 import { changeWeaponProfile, invadeEffectsAutomation } from "./attacks.js";
 import { registerSettings } from "./settings.js";
 import { resistHeat } from "./reductions.js";
+import { roundStartRoll } from "./combats.js";
 
 let socket; // pass this to functions that require users to request GM to update tokens
 
@@ -26,6 +27,8 @@ Hooks.on('init', registerSettings);
 
 Hooks.on('init', function () { console.log('lancer-mini-automations | Init'); });
 
-Hooks.on("lancer.postFlow.TechAttackFlow", (state) => invadeEffectsAutomation(state, socket));
+Hooks.on("lancer.postFlow.TechAttackFlow", async (state) => invadeEffectsAutomation(state, socket));
 
 Hooks.on("preUpdateActor", resistHeat);
+
+Hooks.on("updateCombat", roundStartRoll);
