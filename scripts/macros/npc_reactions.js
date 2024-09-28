@@ -34,7 +34,7 @@ export async function displayNpcReactions(){
                     && system.type === "Reaction"
                     && system.trigger.match(keywords) != null) {
                         if(isGm || scanList.some(x => x.name.includes(actor.name) === true)){
-                        reactions.set((actor.name + ": " + system.trigger), system.effect);
+                            reactions.set((actor.name + ": " + system.trigger), system.effect);
                         }
                 }
             });

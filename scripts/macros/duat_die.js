@@ -13,7 +13,7 @@ export async function runDuatDie(state, socket){
     if(!state?.state?.data?.hit_results[0]?.hit)
         return false;        
     // Is this the duat tech attack?
-    if(!state?.state?.data?.action?.name === "Hurl Into the Duat")
+    if(state?.state?.data?.action?.name.localeCompare("Hurl Into the Duat") != 0)
         return false;
 
     // Icon names and paths

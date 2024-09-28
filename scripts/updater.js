@@ -46,9 +46,10 @@ export async function updateTokenCondition(tokenId, conditionId, replace = false
     if(replace){
         await actor.document.toggleActiveEffect(effect);
     }else{
-        if(actor.document.hasStatusEffect(effect)){
+        if(actor.document.hasStatusEffect(conditionId)){
             return;
+        }else{
+            await actor.document.toggleActiveEffect(effect);
         }
-        await actor.document.toggleActiveEffect(effect);
     }
 }
