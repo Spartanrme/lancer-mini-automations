@@ -3,7 +3,10 @@ import { changeWeaponProfile, invadeEffectsAutomation } from "./attacks.js";
 import { registerSettings } from "./settings.js";
 import { resistHeat } from "./reductions.js";
 import { roundStartRoll } from "./combats.js";
+// Macro imports
 import { runLoadoutDie } from "./macros/loadout_die.js";
+import { runStormbendingDie } from "./macros/stormbender_die.js";
+import { runIconoclastDie } from "./macros/iconoclast_die.js";
 
 let socket; // pass this to functions that require users to request GM to update tokens
 
@@ -30,10 +33,13 @@ Hooks.on('init', registerSettings);
 Hooks.on('init', function () { console.log('lancer-mini-automations | Init'); });
 
 Hooks.on('ready', function () {
-  console.log('lancer-mini-automations | exposing macro names.');
+  console.log('lancer-mini-automations | exposing socket.');
   game.modules.get('lancer-mini-automations').socket = socket;
+  console.log('lancer-mini-automations | exposing macros.');
   game.modules.get('lancer-mini-automations').exposed = {
-      runLoadoutDie
+      runLoadoutDie,
+      runStormbendingDie,
+      runIconoclastDie,
   };
 });
 
