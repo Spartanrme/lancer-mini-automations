@@ -9,11 +9,9 @@ export async function runDuatDie(state, socket){
     // Cancel the macro if no token is selected
     if(!token)
         return false;
-
     // Before we do anything, did it hit?
     if(!state?.state?.data?.hit_results[0]?.hit)
         return false;        
-    
     // Is this the duat tech attack?
     if(!state?.state?.data?.action?.name === "Hurl Into the Duat")
         return false;

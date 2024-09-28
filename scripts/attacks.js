@@ -60,12 +60,12 @@ export async function invadeEffectsAutomation(state, socket) {
             // Don't apply impaired to PCs with Design Core Bonus
             if(actor.type != "mech" || (actor.system?.pilot?.value.items.some((i) => i.system.lid === "cb_superior_by_design") != true)){
                 dmgType += `, Impaired`;
-                await socket.executeAsGM("toggleCondition", id, "impaired", false);
+                await socket.executeAsGM("updateTokenCondition", id, "impaired", false);
             }
             // Don't apply slow to PCs
             if(actor.type != "mech"){
                 dmgType += `, Slowed`;
-                await socket.executeAsGM("toggleCondition", id, "slow", false);
+                await socket.executeAsGM("updateTokenCondition", id, "slow", false);
             } 
         }
       }

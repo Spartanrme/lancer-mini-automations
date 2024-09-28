@@ -9,6 +9,7 @@ import { runStormbendingDie } from "./macros/stormbender_die.js";
 import { runIconoclastDie } from "./macros/iconoclast_die.js";
 import { runDuatDie } from "./macros/duat_die.js";
 import { runBlademasterDie } from "./macros/blademaster_die.js";
+import { displayNpcReactions } from "./macros/npc_reactions.js";
 
 let socket; // pass this to functions that require users to request GM to update tokens
 
@@ -42,7 +43,8 @@ Hooks.on('ready', function () {
       runLoadoutDie,
       runStormbendingDie,
       runIconoclastDie,
-      runBlademasterDie
+      runBlademasterDie,
+      displayNpcReactions
   };
 });
 
