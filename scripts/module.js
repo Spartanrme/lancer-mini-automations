@@ -3,6 +3,7 @@ import { changeWeaponProfile, invadeEffectsAutomation } from "./attacks.js";
 import { registerSettings } from "./settings.js";
 import { resistHeat } from "./reductions.js";
 import { roundStartRoll } from "./combats.js";
+import { runLoadoutDie } from "./macros/loadout_die.js";
 
 let socket; // pass this to functions that require users to request GM to update tokens
 
@@ -26,6 +27,13 @@ Hooks.once("lancer.registerFlows", (flowSteps, flows) => {
 Hooks.on('init', registerSettings);
 
 Hooks.on('init', function () { console.log('lancer-mini-automations | Init'); });
+
+Hooks.on('ready', function () {
+  console.log('lancer-mini-automations | exposing macro names.');
+  game.modules.get('lancer-mini-automations').exposed = {
+      runLoadoutDie
+  };
+});
 
 Hooks.on("lancer.postFlow.TechAttackFlow", async (state) => invadeEffectsAutomation(state, socket));
 

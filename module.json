@@ -15,6 +15,33 @@
         "type": "system",
         "compatibility": {}
       }
+    ],
+    "requires": [
+      {
+        "id": "fxmaster",
+        "type": "module",
+        "compatibility": {}
+      },
+      {
+        "id": "tokenmagic",
+        "type": "module",
+        "compatibility": {}
+      },
+      {
+        "id": "sequencer",
+        "type": "module",
+        "compatibility": {}
+      },
+      {
+        "id": "socketlib",
+        "type": "module",
+        "compatibility": {}
+      },
+      {
+        "id": "statuscounter",
+        "type": "module",
+        "compatibility": {}
+      }
     ]
   },
   "authors": [
@@ -40,6 +67,17 @@
       "label": "Lancer-Mini-Automation-Macros",
       "path": "packs/lancer-mini-automation-macros",
       "type": "Macro",
+      "system": "lancer",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "lancer-mini-automation-statuses",
+      "label": "Lancer-Mini-Automation-Statuses",
+      "path": "packs/lancer-mini-automation-statuses",
+      "type": "Item",
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
