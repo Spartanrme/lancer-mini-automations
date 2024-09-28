@@ -68,7 +68,7 @@ export function registerSettings() {
 
     game.settings.register('lancer-mini-automations', 'roundStartSuccessRange', {
         name: 'Success Range',
-        hint: 'The name that will appear in the chat message for the roll.',
+        hint: '(WIP) The target number to consider the roll a success.',
         scope: 'world',
         config: false,
         type: Number,

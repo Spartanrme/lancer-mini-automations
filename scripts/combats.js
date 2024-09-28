@@ -1,6 +1,6 @@
 export async function roundStartRoll(combat, updates, options, userId){
 	// Return if the use isn't the GM or if it isn't the start of a new round
-	if(!game.settings.get('lancer-mini-automations', 'roundStartEnable') && !game.user.isGM || !foundry.utils.hasProperty(updates, "round")){
+	if(!game.settings.get('lancer-mini-automations', 'roundStartEnable') || !game.user.isGM || !foundry.utils.hasProperty(updates, "round")){
 		return;
 	}
     
