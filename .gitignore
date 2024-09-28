@@ -1,1 +1,4 @@
-foundry
+node_modules
+client
+common
+dist

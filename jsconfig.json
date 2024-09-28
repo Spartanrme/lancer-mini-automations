@@ -1,11 +1,7 @@
 {
-    "compilerOptions": {
-      "module": "ES6",
-      "target": "ES6"
-    },
-    "exclude": ["node_modules", "**/node_modules/*"],
-    "include": ["foundry/client/**/*.js", "foundry/**/*.mjs"],
-    "typeAcquisition": {
-      "include": ["jquery"]
-    }
-  }
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ES6"
+  },
+  "include": ["dist/**/*", "client/**/*", "common/**/*"]
+}
