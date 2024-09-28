@@ -1,4 +1,3 @@
-import { getSpeaker } from "./macro_helpers.js";
 import { getAliveNpcCount } from "./macro_helpers.js";
 
 export async function runIconoclastDie(){
