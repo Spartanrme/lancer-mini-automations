@@ -4,7 +4,7 @@ Most tech attack "invades" have invade === yes
 Basic tech attack & quick techs do not - so we need to check by name for what to do
 */
 export async function invadeEffectsAutomation(state, socket) {
-  if(game.settings.get('lancer-mini-automations', 'enableInvadeEffectsAutomation') === false) return false;
+  if(await game.settings.get('lancer-mini-automations', 'enableInvadeAutomations') === false) return false;
 
   // Setup for chat messages
   let statusApplied = false;
@@ -70,7 +70,7 @@ export async function invadeEffectsAutomation(state, socket) {
         }
       }
   }
-  if(statusApplied && game.settings.get('lancer-mini-automations', 'enableInvadeWhispers')){
+  if(statusApplied && await game.settings.get('lancer-mini-automations', 'enableInvadeWhispers')){
         let msgContent = `<div class="card clipped-bot" style="margin: 0px;">
             <div class="card clipped">
                 <div class="lancer-mini-header" >// DAMAGE APPLIED //</div>

@@ -1,5 +1,5 @@
 export async function runDuatDie(state, socket){
-    if(game.settings.get('lancer-mini-automations', 'enableDuatAutomation') === false){
+    if(await game.settings.get('lancer-mini-automations', 'enableDuatAutomation') === false){
         return false;
     }
     // Targets (just use the first)

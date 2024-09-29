@@ -359,7 +359,7 @@ export async function autoApplyDamage(){
             });
             const numreg = /\d+/;
 
-            if(game.settings.get('lancer-mini-automations', 'enableApplyDamageSkipSelfHeat') && content.includes("// SELF HEAT //")){
+            if(await game.settings.get('lancer-mini-automations', 'enableApplyDamageSkipSelfHeat') && content.includes("// SELF HEAT //")){
                 // Skip the last damage number, as that is the self heat
                 damageArray.pop();
             }
