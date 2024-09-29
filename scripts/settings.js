@@ -87,6 +87,16 @@ export function registerSettings() {
         onChange: value => { console.log(value) }
     });
 
+    game.settings.register('lancer-mini-automations', 'enableSkipSelfHeat', {
+        name: 'Skip Self Heat on Apply Damage Macro',
+        hint: 'If enabled, removes the Self Heat damage from being picked up by the Apply Damage macro.',
+        scope: 'world',
+        config: true,
+        type: Boolean,
+        default: true,
+        onChange: value => { console.log(value) }
+    });
+
     game.settings.register('lancer-mini-automations', 'enableResistHeatAutomation', {
         name: 'Enable Resist Heat Automation',
         hint: 'If a token has the status with an id named "resist_heat", halves the heat updated to the token.',

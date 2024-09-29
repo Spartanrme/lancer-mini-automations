@@ -1,0 +1,42 @@
+<!-- Credit to csmcfarland's Lancer QoL that this template is based off of -->
+<form autocomplete="off">
+
+    <div class="form-group">
+        <label>Enable Invade Automations</label>
+        <input type="checkbox" name="enableInvadeAutomations" {{#if enableInvadeAutomations}}checked{{/if}}
+            data-dtype="Boolean" />
+        <p class="notes">When set to true, automatically adds 2 heat to targets hit with systems that have the invade tag. Additionally, enables a prompt for 'Fragment Signal' for basic tech attacks.</p>
+    </div>
+
+    <div class="form-group">
+        <label>Enable Hurl Into the Duat Automation</label>
+        <input type="checkbox" name="enableDuatAutomation" {{#if enableDuatAutomation}}checked{{/if}}
+            data-dtype="Boolean" />
+        <p class="notes">When set to true, automate adding the status effects and heat from Hurl Into the Duat. Includes switching an NPC's ownership on the fourth gate.</p>
+    </div>
+
+    <div class="form-group">
+        <label>Enable Round Start Roll</label>
+        <input type="checkbox" name="roundStartEnable" {{#if roundStartEnable}}checked{{/if}}
+            data-dtype="Boolean" />
+        <p class="notes">When set to true, automate rolling a die at the start of each combat round.</p>
+    </div>
+
+    <div class="form-group">
+        <label>Enable Round Start Roll</label>
+        <input type="checkbox" name="roundStartEnable" {{#if roundStartEnable}}checked{{/if}}
+            data-dtype="Boolean" />
+        <p class="notes">When set to true, automate rolling a die at the start of each combat round.</p>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" name="submit">
+            <i class="fas fa-save"></i>
+            <span>Save</span>
+        </button>
+        <button type="button" name="reset">
+            <i class="fas fa-undo"></i>
+            <span>Reset</span>
+        </button>
+    </div>
+</form>
