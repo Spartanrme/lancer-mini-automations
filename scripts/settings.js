@@ -40,12 +40,14 @@ class invadeAutomationsFormApplication extends FormApplication {
     getData(options = {}) {
         let context = super.getData();
         context.enableInvadeAutomations = game.settings.get('lancer-mini-automations', 'enableInvadeAutomations');
+        context.enableInvadeWhispers = game.settings.get('lancer-mini-automations', 'enableInvadeWhispers');
         context.enableDuatAutomation = game.settings.get('lancer-mini-automations', 'enableDuatAutomation');
         return context;
     }
 
     _updateObject(event, formData) {
         game.settings.set('lancer-mini-automations', 'enableInvadeAutomations', formData.enableInvadeAutomations);
+        game.settings.set('lancer-mini-automations', 'enableInvadeWhispers', formData.enableInvadeWhispers);
         game.settings.set('lancer-mini-automations', 'enableDuatAutomation', formData.enableDuatAutomation);
     }
 }
