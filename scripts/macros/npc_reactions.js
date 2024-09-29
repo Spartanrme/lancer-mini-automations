@@ -2,7 +2,8 @@
 export async function displayNpcReactions(){
     // The keywords to search for in triggers
     let keywords = /allied|ally|move/;
-    if(event.shiftKey) keywords = /./;
+    const shfitHeld = game.keyboard.isModifierActive(KeyboardManager.MODIFIER_KEYS.SHIFT);
+    if(shfitHeld) keywords = /./;
 
     let reactions = new Map();
 
@@ -43,7 +44,7 @@ export async function displayNpcReactions(){
 
     // Setup dialog content
     let msgContent = `<ul>`;
-    if(!event.shiftKey) msgContent = "<i>(Run this macro again while holding Shift for all Reactions)</i>" + msgContent;
+    if(!shfitHeld) msgContent = "<i>(Run this macro again while holding Shift for all Reactions)</i>" + msgContent;
     for (let entry of reactions.entries()) {
     msgContent += `<li>${entry[0]}
                     <ul><li>${entry[1]}</li></ul>
