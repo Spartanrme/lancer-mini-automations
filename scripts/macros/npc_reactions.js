@@ -11,8 +11,8 @@ export async function displayNpcReactions(){
     let isGm = game.user.isGM;
     let scanList = [];
     if(!isGm){
-    // Get all scanned NPCs
-    scanList = game.folders.getName("SCAN Database")?.contents ?? [];
+        // Get all scanned NPCs
+        scanList = game.folders.getName("SCAN Database")?.contents ?? [];
     }
 
     game.scenes.current.tokens.forEach(x => {
