@@ -2,7 +2,7 @@
   "id": "lancer-mini-automations",
   "title": "Lancer Mini Automations",
   "socket": true,
-  "version": "1.4.0",
+  "version": "#{VERSION}#",
   "compatibility": {
     "minimum": "11",
     "verified": "11",
@@ -60,7 +60,7 @@
   "bugs": "https://github.com/Spartanrme/lancer-mini-automations/issues",
   "changelog": "https://github.com/Spartanrme/lancer-mini-automations/blob/main/CHANGELOG.md",
   "download": "#{DOWNLOAD}#",
-  "manifest": "https://github.com/Spartanrme/lancer-mini-automations/releases/latest/download/module.json",
+  "manifest": "#{MANIFEST}#",
   "packs": [
     {
       "name": "lancer-mini-automation-macros",
