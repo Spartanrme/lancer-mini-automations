@@ -1,4 +1,7 @@
 export async function runDuatDie(state, socket){
+    if(game.settings.get('lancer-mini-automations', 'enableDuatAutomation') === false){
+        return false;
+    }
     // Targets (just use the first)
     const target = game.user.targets.first();
     const token = canvas.tokens.controlled[0];

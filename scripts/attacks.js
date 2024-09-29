@@ -70,7 +70,7 @@ export async function invadeEffectsAutomation(state, socket) {
         }
       }
   }
-  if(statusApplied){
+  if(statusApplied && game.settings.get('lancer-mini-automations', 'enableInvadeWhispers')){
         let msgContent = `<div class="card clipped-bot" style="margin: 0px;">
             <div class="card clipped">
                 <div class="lancer-mini-header" >// DAMAGE APPLIED //</div>
@@ -85,7 +85,7 @@ export async function invadeEffectsAutomation(state, socket) {
             </div>
         </div>`
 
-        ChatMessage.create({ //comment this part out if you don't want stuff whispered to chat.
+        ChatMessage.create({
         content: msgContent,
         whisper: ChatMessage.getWhisperRecipients("GM")
         });

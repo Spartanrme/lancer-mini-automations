@@ -8,27 +8,21 @@
         <p class="notes">When set to true, automatically adds 2 heat to targets hit with systems that have the invade tag. Additionally, enables a prompt for 'Fragment Signal' for basic tech attacks.</p>
     </div>
 
+    
+    <div class="form-group"></div>
+        <label>Enable Whispers</label>
+        <input type="checkbox" name="enableInvadeWhispers" {{#if enableInvadeWhispers}}checked{{/if}}
+            data-dtype="Boolean" />
+        <p class="notes">Enable sending whispers to the GM on the heat and statuses for Invade Automations.</p>
+    </div>
+
     <div class="form-group">
         <label>Enable Hurl Into the Duat Automation</label>
         <input type="checkbox" name="enableDuatAutomation" {{#if enableDuatAutomation}}checked{{/if}}
             data-dtype="Boolean" />
         <p class="notes">When set to true, automate adding the status effects and heat from Hurl Into the Duat. Includes switching an NPC's ownership on the fourth gate.</p>
     </div>
-
-    <div class="form-group">
-        <label>Enable Round Start Roll</label>
-        <input type="checkbox" name="roundStartEnable" {{#if roundStartEnable}}checked{{/if}}
-            data-dtype="Boolean" />
-        <p class="notes">When set to true, automate rolling a die at the start of each combat round.</p>
-    </div>
-
-    <div class="form-group">
-        <label>Enable Round Start Roll</label>
-        <input type="checkbox" name="roundStartEnable" {{#if roundStartEnable}}checked{{/if}}
-            data-dtype="Boolean" />
-        <p class="notes">When set to true, automate rolling a die at the start of each combat round.</p>
-    </div>
-
+    
     <div class="form-group">
         <button type="submit" name="submit">
             <i class="fas fa-save"></i>
