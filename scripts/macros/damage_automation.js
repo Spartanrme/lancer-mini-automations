@@ -273,10 +273,11 @@ async function applyDamage(dmg = 0, type = null, windowCount = 1, windowTotal = 
                 <span class="effect-text">${effects}</span>
             </div>
         </div>`
-        ChatMessage.create({ //comment this part out if you don't want stuff whispered to chat.
-            content: msgContent,
-            whisper: ChatMessage.getWhisperRecipients("GM")
-        });
+        if(await game.settings.get('lancer-mini-automations', 'enableApplyDamageWhisper'))
+            ChatMessage.create({
+                content: msgContent,
+                whisper: ChatMessage.getWhisperRecipients("GM")
+            });
     }
 
     async function promptForDamage() {
@@ -358,7 +359,7 @@ export async function autoApplyDamage(){
             });
             const numreg = /\d+/;
 
-            if(game.settings.get('lancer-mini-automations', 'enableSkipSelfHeat') && content.includes("// SELF HEAT //")){
+            if(game.settings.get('lancer-mini-automations', 'enableApplyDamageSkipSelfHeat') && content.includes("// SELF HEAT //")){
                 // Skip the last damage number, as that is the self heat
                 damageArray.pop();
             }
