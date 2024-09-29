@@ -30,3 +30,13 @@ Added customized apply damage macro.
 
 Bugfixes:
 - Fixed shift key not being detected in npc reactions macro
+
+2.0.0  
+New release tag workflow so Foundry can update the module properly.
+
+2.1.0  
+Added various additional settings:
+- Toggle for auto-applying heat from invades
+- Toggle for GM whispers for statuses and heats from invades
+- Toggle for Hurl Into the Duat automation
+- Toggle for chat whispers from the Apply Damage macro.
