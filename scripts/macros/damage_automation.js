@@ -273,7 +273,24 @@ async function applyDamage(dmg = 0, type = null, windowCount = 1, windowTotal = 
                 <span class="effect-text">${effects}</span>
             </div>
         </div>`
-        if(await game.settings.get('lancer-mini-automations', 'enableApplyDamageWhisper'))
+        let sendMessage = true;
+        let whisperSetting = await game.settings.get('lancer-mini-automations', 'enableApplyDamageWhisper');
+        switch(whisperSetting){
+            case "all":
+                break;
+            case "pc":
+                if(token.actor.type != "mech")
+                    sendMessage = false;
+                break;
+            case "npc":
+                if(token.actor.type != "npc")
+                    sendMessage = false;
+                break;
+            case "none":
+                sendMessage = false;
+                break;
+        }
+        if(sendMessage)
             ChatMessage.create({
                 content: msgContent,
                 whisper: ChatMessage.getWhisperRecipients("GM")

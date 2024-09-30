@@ -40,3 +40,6 @@ Added various additional settings:
 - Toggle for GM whispers for statuses and heats from invades
 - Toggle for Hurl Into the Duat automation
 - Toggle for chat whispers from the Apply Damage macro.
+
+2.1.1
+Added additional dropdown to disable whispers on the apply damage macro for NPCs/PCs/both.

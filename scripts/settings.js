@@ -142,19 +142,24 @@ export function registerSettings() {
     });
     //#endregion
 
+    game.settings.register('lancer-mini-automations', 'enableApplyDamageWhisper', {
+        name: 'Apply Damage Macro: Enable Damage Whispers',
+        hint: 'Select which whispers should be sent to the GM, or disable whispers completly for the Apply Damage macro.',
+        scope: 'world',
+        config: true,
+        type: String,
+        choices: {
+            "all": "Whisper on both PC and NPC",
+            "npc": "Whisper on only NPC",
+            "pc": "Whisper on only PC",
+            "none": "Disable whispers"
+        },
+        default: "all"
+    });
+
     game.settings.register('lancer-mini-automations', 'enableApplyDamageSkipSelfHeat', {
         name: 'Apply Damage Macro: Skip Self Heat',
         hint: 'If enabled, removes the Self Heat damage from being picked up by the Apply Damage macro.',
-        scope: 'world',
-        config: true,
-        type: Boolean,
-        default: true,
-        onChange: value => { console.log(value) }
-    });
-
-    game.settings.register('lancer-mini-automations', 'enableApplyDamageWhisper', {
-        name: 'Apply Damage Macro: Enable Damage Whispers',
-        hint: 'Toggles if the Apply Damage Macro should send a chat whisper to the GM on damage done.',
         scope: 'world',
         config: true,
         type: Boolean,
