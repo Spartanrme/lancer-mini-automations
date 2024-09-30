@@ -124,6 +124,7 @@ async function applyDamage(dmg = 0, type = null, windowCount = 1, windowTotal = 
                 <label class="container">
                     <i>(Don't subtract armor)</i>
                 </label>
+                <hr stlye="border-top: 3px solid #bbb;">
                 ${uiNpcReductions}
             </div>
             <div class="flexcol">

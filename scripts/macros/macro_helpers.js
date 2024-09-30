@@ -81,15 +81,16 @@ let reactions = [];
 This macro runs through an NPCs items and matches (using regex) all items containing reactions.
 */
 export async function getNpcDamageReductions(token){
-    let reactions = [];
+    
+    let reductions = [];
     // Exit if nothing is selected or if the token type isn't 'npc'
     if(!token || token.actor.type != "npc"){
-        return reactions;
+        return reductions;
     }
 
     // Get all the NPC items
     let items = token.actor.items;
-    let keywords = /Hit|Hits|Damage|Damages/i;
+    let keywords = /Resistance|Immunity/;
 
     // Run through each NPC's items
     items.forEach(x =>{
@@ -97,15 +98,16 @@ export async function getNpcDamageReductions(token){
         
         // We want to filter by the following things:
         // 1) It isn't destroyed
-        // 2) It is a reaction
-        if(foundry.utils.hasProperty(system, "trigger") 
+        // 2) It is a trait (ignore reactions)
+        // 3) It contains one of the items in our keyword
+        if(foundry.utils.hasProperty(system, "effect") 
             && system.destroyed != true
-            && system.type === "Reaction"
-            && system.trigger.match(keywords) != null) {
-                reactions.push(system.trigger);
+            && system.type === "Trait"
+            && system.effect.match(keywords) != null) {
+                reductions.push(system.effect);
         }
     });
-    return reactions;
+    return reductions;
 }
 
 export async function getTalentRank(talentName){
