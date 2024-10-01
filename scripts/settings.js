@@ -52,6 +52,32 @@ class invadeAutomationsFormApplication extends FormApplication {
     }
 }
 
+class applyDamageFormApplication extends FormApplication {
+    static get defaultOptions() {
+        const options = super.defaultOptions;
+        options.id = 'lancer-mini-automations-applyDamageMenu';
+        options.template = 'modules/lancer-mini-automations/templates/applyDamageTemplate.hbs';
+        options.height = 'auto';
+        options.width = 550;
+        options.title = 'Apply Damage Menu';
+        return options;
+    }
+
+    getData(options = {}) {
+        let context = super.getData();
+        context.whisperType = game.settings.get('lancer-mini-automations', 'whisperType');
+        context.enableApplyDamageSkipSelfHeat = game.settings.get('lancer-mini-automations', 'enableApplyDamageSkipSelfHeat');
+        context.enableApplyDamageShowReactions = game.settings.get('lancer-mini-automations', 'enableApplyDamageShowReactions');
+        return context;
+    }
+
+    _updateObject(event, formData) {
+        game.settings.set('lancer-mini-automations', 'whisperType', formData.whisperType);
+        game.settings.set('lancer-mini-automations', 'enableApplyDamageSkipSelfHeat', formData.enableApplyDamageSkipSelfHeat);
+        game.settings.set('lancer-mini-automations', 'enableApplyDamageShowReactions', formData.enableApplyDamageShowReactions);
+    }
+}
+
 export function registerSettings() {
     //#region roundStartRollMenu
     game.settings.registerMenu("lancer-mini-automations", "roundStartRollMenu", {
@@ -142,11 +168,20 @@ export function registerSettings() {
     });
     //#endregion
 
-    game.settings.register('lancer-mini-automations', 'enableApplyDamageWhisper', {
+    //#region applyDamageMenu
+    game.settings.registerMenu('lancer-mini-automations', 'applyDamageMenu', {
+        name: 'Apply Damage Menu',
+        label: "Apply Damage Settings",
+        hint: "Change settings related to the Apply Damage macro.",
+        icon: "fas fa-bars",
+        type: applyDamageFormApplication,
+        restricted: true
+    });
+
+    game.settings.register('lancer-mini-automations', 'whisperType', {
         name: 'Apply Damage Macro: Enable Damage Whispers',
-        hint: 'Select which whispers should be sent to the GM, or disable whispers completly for the Apply Damage macro.',
         scope: 'world',
-        config: true,
+        config: false,
         type: String,
         choices: {
             "all": "Whisper on both PC and NPC",
@@ -154,18 +189,27 @@ export function registerSettings() {
             "pc": "Whisper on only PC",
             "none": "Disable whispers"
         },
-        default: "all"
+        default: true
     });
 
     game.settings.register('lancer-mini-automations', 'enableApplyDamageSkipSelfHeat', {
         name: 'Apply Damage Macro: Skip Self Heat',
-        hint: 'If enabled, removes the Self Heat damage from being picked up by the Apply Damage macro.',
         scope: 'world',
-        config: true,
+        config: false,
         type: Boolean,
         default: true,
         onChange: value => { console.log(value) }
     });
+
+    game.settings.register('lancer-mini-automations', 'enableApplyDamageShowReactions', {
+        name: 'Apply Damage Macro: Show Damage Reactions/Reductions',
+        scope: 'world',
+        config: false,
+        type: Boolean,
+        default: true,
+        onChange: value => { console.log(value) }
+    });
+    //#endregion
 
     game.settings.register('lancer-mini-automations', 'enableResistHeatAutomation', {
         name: 'Enable Resist Heat Automation',

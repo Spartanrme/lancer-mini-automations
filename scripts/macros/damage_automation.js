@@ -93,7 +93,8 @@ async function applyDamage(dmg = 0, type = null, windowCount = 1, windowTotal = 
 
     // NPC damage reductions & reactions
     let uiNpcReductions = ``;
-    if(canvas.tokens.controlled.length === 1){
+    let reactionsSkip = game.settings.get('lancer-mini-automations', 'enableApplyDamageShowReactions');
+    if(canvas.tokens.controlled.length === 1 && !reactionsSkip){
         let token = canvas.tokens.controlled[0];
         let npcReductions = await getNpcDamageReductions(token);
         // Reductions
@@ -111,7 +112,7 @@ async function applyDamage(dmg = 0, type = null, windowCount = 1, windowTotal = 
                 dots = "..."
             uiNpcReductions += `<label><span>--Reaction: ` + npcReactions[i].substring(0, 75) + dots + `</span></label>`;
         }
-    }else uiNpcReductions += `<i>Multiple tokens selected</i>`;
+    }else if(!reactionsSkip) uiNpcReductions += `<i>Multiple tokens selected</i>`;
 
     const htmlFormContent = `<form class="lancer accdiff window-content">
         <div class="flexrow lancer-border-primary" style="padding-bottom: 4px;">

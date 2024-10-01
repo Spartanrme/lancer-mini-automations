@@ -1,0 +1,39 @@
+<!-- Credit to csmcfarland's Lancer QoL that this template is based off of -->
+<form autocomplete="off">
+
+    <div class="form-group">
+        <label>Apply Damage Whispers</label>
+            <select id="whisperType" name="whisperType">
+                <option value="all" {{#if (eq whisperType 'all' )}}selected{{/if}}>Whisper on both PC and NPC</option>
+                <option value="npc" {{#if (eq whisperType 'npc' )}}selected{{/if}}>Whisper on only NPC</option>
+                <option value="pc" {{#if (eq whisperType 'pc' )}}selected{{/if}}>Whisper on only PC</option>
+                <option value="none" {{#if (eq whisperType 'none' )}}selected{{/if}}>Disable whispers</option>
+            </select>
+        <p class="notes">Select which whispers should be sent to the GM, or disable whispers completly for the Apply Damage macro.</p>
+    </div>
+    
+    <div class="form-group">
+        <label>Enable Whispers</label>
+        <input type="checkbox" name="enableApplyDamageSkipSelfHeat" {{#if enableApplyDamageSkipSelfHeat}}checked{{/if}}
+            data-dtype="Boolean" />
+        <p class="notes">Enable sending whispers to the GM on the heat and statuses for Invade Automations.</p>
+    </div>
+
+    <div class="form-group">
+        <label>Enable Hurl Into the Duat Automation</label>
+        <input type="checkbox" name="enableApplyDamageShowReactions" {{#if enableApplyDamageShowReactions}}checked{{/if}}
+            data-dtype="Boolean" />
+        <p class="notes">If enabled, the macro will show NPC damage reactions/damage reduction traits in the dialog.</p>
+    </div>
+    
+    <div class="form-group">
+        <button type="submit" name="submit">
+            <i class="fas fa-save"></i>
+            <span>Save</span>
+        </button>
+        <button type="button" name="reset">
+            <i class="fas fa-undo"></i>
+            <span>Reset</span>
+        </button>
+    </div>
+</form>
