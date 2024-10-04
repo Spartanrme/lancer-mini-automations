@@ -64,8 +64,7 @@ export async function npcAttackTraitReminder(state){
 	let atkTraits = [];
 	let allTraits = await state.actor.loadoutHelper.listLoadout();
 	allTraits.forEach(trait => {
-		if(trait?.type.localeCompare("npc_feature") === trait?.system?.type.localeCompare("Trait")){
-
+		if(trait.type?.localeCompare("npc_feature") === 0 && trait.system?.type?.localeCompare("Trait") === 0){
 			if(trait.system.effect.match(keywords) != null){
 				atkTraits.push(trait.name + ": " + trait.system.effect);
 			}
