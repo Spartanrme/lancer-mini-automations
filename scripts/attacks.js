@@ -94,7 +94,7 @@ export async function invadeEffectsAutomation(state, socket) {
 }
 
 export async function changeWeaponProfile(state){
-    if(game.settings.get('lancer-mini-automations', 'enableProfileAutomation') === false) 
+    if(game.settings.get('lancer-mini-automations', 'enableProfileAutomation') === false || state.actor.is_npc()) 
         return true;
 
     let item = state.item;
