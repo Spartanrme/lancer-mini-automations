@@ -59,3 +59,10 @@ Fixed a bug that prevented npc attacks from going past the HUD.
 
 2.4.0
 Added a new feature: UI reminders when preforming an NPC attack that reminds the GM what traits the NPC has that may affect it's attack (in terms of acc, diff, etc...)
+
+2.4.1
+NPC Trait Reminders should now be able to find more traits (it was missing traits that started with "When the", etc....
+
+2.4.2
+Adjusted the kinds of traits the npc trait reminder gets.
+Fixed typo in Apply Damage macro settings and logic.
