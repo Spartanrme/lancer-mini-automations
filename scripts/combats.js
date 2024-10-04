@@ -1,3 +1,6 @@
+/*
+Rolls a die of a user-specified size at the start of each combat round.
+*/
 export async function roundStartRoll(combat, updates, options, userId){
 	// Return if the use isn't the GM or if it isn't the start of a new round
 	if(!game.settings.get('lancer-mini-automations', 'roundStartEnable') || !game.user.isGM || !foundry.utils.hasProperty(updates, "round")){
@@ -44,5 +47,31 @@ export async function roundStartRoll(combat, updates, options, userId){
 		rolls: [check],
 		user: game.user._id,
 		content: content
+	});
+}
+
+/*
+During combat, scans NPC features for traits related to attacking, 
+and notifies the GM of each trait's effects through a UI notification.
+*/
+export async function npcAttackTraitReminder(state){
+	if(!game.user.isGM || !game.combat || !state.actor.is_npc())
+		return;
+
+	const keywords = /on attacks when|on attacks against|on all attacks|on all subsequent attacks|makes a successful attack|successfully attacked|attacks with|attacks deal|ignores Hidden/;
+
+	// We can get the NPC through the state
+	let atkTraits = [];
+	let allTraits = await state.actor.loadoutHelper.listLoadout();
+	allTraits.forEach(trait => {
+		if(trait?.type.localeCompare("npc_feature") === trait?.system?.type.localeCompare("Trait")){
+
+			if(trait.system.effect.match(keywords) != null){
+				atkTraits.push(trait.name + ": " + trait.system.effect);
+			}
+		}
+	});
+	atkTraits.forEach(trait =>{
+		ui.notifications.notify(trait)
 	});
 }

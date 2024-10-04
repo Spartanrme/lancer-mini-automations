@@ -2,7 +2,7 @@ import { updateToken, updateTokenCondition, updateTokenOwnership } from "./updat
 import { changeWeaponProfile, invadeEffectsAutomation } from "./attacks.js";
 import { registerSettings } from "./settings.js";
 import { resistHeat } from "./reductions.js";
-import { roundStartRoll } from "./combats.js";
+import { roundStartRoll, npcAttackTraitReminder } from "./combats.js";
 // Macro imports
 import { runLoadoutDie } from "./macros/loadout_die.js";
 import { runStormbendingDie } from "./macros/stormbender_die.js";
@@ -24,10 +24,12 @@ Hooks.once("socketlib.ready", () => {
 
 Hooks.once("lancer.registerFlows", (flowSteps, flows) => {
   flowSteps.set("changeWeaponProfile", changeWeaponProfile);
+  flowSteps.set("npcAttackTraitReminder", npcAttackTraitReminder)
 
     const weaponAttackFlow = flows.get("WeaponAttackFlow");
     if (weaponAttackFlow) {
       weaponAttackFlow.insertStepBefore("initAttackData", "changeWeaponProfile");
+      weaponAttackFlow.insertStepAfter("showAttackHUD", "npcAttackTraitReminder")
     }
   }
 );
