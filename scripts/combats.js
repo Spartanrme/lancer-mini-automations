@@ -58,7 +58,7 @@ export async function npcAttackTraitReminder(state){
 	if(!game.user.isGM || !game.combat || !state.actor.is_npc())
 		return;
 
-	const keywords = /on attacks when|on attacks against|on all attacks|on all subsequent attacks|makes a successful attack|successfully attacked|attacks with|attacks deal|ignores Hidden/;
+	const keywords = /on attacks when|on attacks against|on all attacks|on all subsequent attacks|makes a successful attack|successfully attacked|attacks with|attacks deal|ignores Hidden|bonus damage|Against characters|When the/;
 
 	// We can get the NPC through the state
 	let atkTraits = [];
