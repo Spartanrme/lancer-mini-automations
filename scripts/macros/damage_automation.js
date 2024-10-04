@@ -100,17 +100,17 @@ async function applyDamage(dmg = 0, type = null, windowCount = 1, windowTotal = 
         // Reductions
         for(let i = 0; i < npcReductions.length; i++){
             let dots = "";
-            if(npcReductions[i].length > 75)
+            if(npcReductions[i].length > 150)
                 dots = "..."
-            uiNpcReductions += `<label><span>--` + npcReductions[i].substring(0, 75) + dots + `</span></label>`;
+            uiNpcReductions += `<label><span>--` + npcReductions[i].substring(0, 150) + dots + `</span></label><br/>`;
         }
         // Reactions
         let npcReactions = await getNpcDamageReactions(token);
         for(let i = 0; i < npcReactions.length; i++){
             let dots = "";
-            if(npcReactions[i].length > 75)
+            if(npcReactions[i].length > 150)
                 dots = "..."
-            uiNpcReductions += `<label><span>--Reaction: ` + npcReactions[i].substring(0, 75) + dots + `</span></label>`;
+            uiNpcReductions += `<label><span>--Reaction: ` + npcReactions[i].substring(0, 150) + dots + `</span></label><br/>`;
         }
     }else if(canvas.tokens.controlled.length > 1) uiNpcReductions += `<i>Multiple tokens selected</i>`;
 
@@ -125,8 +125,6 @@ async function applyDamage(dmg = 0, type = null, windowCount = 1, windowTotal = 
                 <label class="container">
                     <i>(Don't subtract armor)</i>
                 </label>
-                <hr stlye="border-top: 3px solid #bbb;">
-                ${uiNpcReductions}
             </div>
             <div class="flexcol">
                 <h3 class="lancer-border-primary">Modifiers</h3>
@@ -159,7 +157,12 @@ async function applyDamage(dmg = 0, type = null, windowCount = 1, windowTotal = 
                 </button>
             </div>
         </div>
-        ${windowText}
+        <div style="padding-top: 4px;">
+            ${uiNpcReductions}
+        </div>
+        <div style="padding-top: 4px;">
+            ${windowText}
+        </div>
     </form>`;
 
     function handleButtonClick(html, event) {

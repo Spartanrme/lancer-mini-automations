@@ -77,3 +77,6 @@ Added settings option to turn off NPC trait reminders.
 2.4.5
 Fixed typo in NPC Trait Reminders setting.
 Fixed bug where said setting didn't work.
+
+2.4.6
+Changed the positioning of the NPC damage reactions/reductions to the bottom of the apply damage macro for better formatting.
