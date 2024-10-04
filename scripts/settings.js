@@ -224,7 +224,7 @@ export function registerSettings() {
     });
 
     game.settings.register('lancer-mini-automations', 'enableNPCTraitReminders', {
-        name: 'Enable Resist Heat Automation',
+        name: 'Enable NPC Trait Reminders',
         hint: 'If enabled, gives a UI notification for the GM during active combat of NPC traits related to attacking when attacking with a weapon.',
         scope: 'world',
         config: true,

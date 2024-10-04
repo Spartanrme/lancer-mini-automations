@@ -73,3 +73,7 @@ Removed HTML content from npc trait reminders text.
 
 2.4.4
 Added settings option to turn off NPC trait reminders.
+
+2.4.5
+Fixed typo in NPC Trait Reminders setting.
+Fixed bug where said setting didn't work.
