@@ -66,3 +66,7 @@ NPC Trait Reminders should now be able to find more traits (it was missing trait
 2.4.2
 Adjusted the kinds of traits the npc trait reminder gets.
 Fixed typo in Apply Damage macro settings and logic.
+
+2.4.3
+Fixed a bug in the Apply Damage macro that would indicate multiple tokens were selected when none were.
+Removed HTML content from npc trait reminders text.

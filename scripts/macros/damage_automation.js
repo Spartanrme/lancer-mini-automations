@@ -112,7 +112,7 @@ async function applyDamage(dmg = 0, type = null, windowCount = 1, windowTotal = 
                 dots = "..."
             uiNpcReductions += `<label><span>--Reaction: ` + npcReactions[i].substring(0, 75) + dots + `</span></label>`;
         }
-    }else if(!showReactions) uiNpcReductions += `<i>Multiple tokens selected</i>`;
+    }else if(canvas.tokens.controlled.length > 1) uiNpcReductions += `<i>Multiple tokens selected</i>`;
 
     const htmlFormContent = `<form class="lancer accdiff window-content">
         <div class="flexrow lancer-border-primary" style="padding-bottom: 4px;">
