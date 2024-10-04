@@ -55,8 +55,9 @@ During combat, scans NPC features for traits related to attacking,
 and notifies the GM of each trait's effects through a UI notification.
 */
 export async function npcAttackTraitReminder(state){
-	if(!game.user.isGM || !game.combat || !state.actor.is_npc())
-		return;
+	if(!game.user.isGM || !game.combat || !state.actor.is_npc() 
+		&& await game.settings.get('lancer-mini-automations', 'enableNPCTraitReminders') != false)
+			return;
 
 	const keywords = /on attacks when|on attacks against|on all attacks|on all subsequent attacks|makes a successful attack|successfully attacked|attacks with|attacks deal|ignores Hidden|bonus damage|^Against characters|^When the/;
 

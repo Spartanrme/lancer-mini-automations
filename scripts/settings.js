@@ -1,3 +1,4 @@
+//#region classes
 class roundStartRollFormApplication extends FormApplication {
     static get defaultOptions() {
         const options = super.defaultOptions;
@@ -77,6 +78,7 @@ class applyDamageFormApplication extends FormApplication {
         game.settings.set('lancer-mini-automations', 'enableApplyDamageShowReactions', formData.enableApplyDamageShowReactions);
     }
 }
+//#endregion
 
 export function registerSettings() {
     //#region roundStartRollMenu
@@ -214,6 +216,16 @@ export function registerSettings() {
     game.settings.register('lancer-mini-automations', 'enableResistHeatAutomation', {
         name: 'Enable Resist Heat Automation',
         hint: 'If a token has the status with an id named "resist_heat", halves the heat updated to the token.',
+        scope: 'world',
+        config: true,
+        type: Boolean,
+        default: true,
+        onChange: value => { console.log(value) }
+    });
+
+    game.settings.register('lancer-mini-automations', 'enableNPCTraitReminders', {
+        name: 'Enable Resist Heat Automation',
+        hint: 'If enabled, gives a UI notification for the GM during active combat of NPC traits related to attacking when attacking with a weapon.',
         scope: 'world',
         config: true,
         type: Boolean,
