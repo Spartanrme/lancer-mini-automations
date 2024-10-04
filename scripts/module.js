@@ -29,7 +29,7 @@ Hooks.once("lancer.registerFlows", (flowSteps, flows) => {
     const weaponAttackFlow = flows.get("WeaponAttackFlow");
     if (weaponAttackFlow) {
       weaponAttackFlow.insertStepBefore("initAttackData", "changeWeaponProfile");
-      weaponAttackFlow.insertStepAfter("showAttackHUD", "npcAttackTraitReminder")
+      weaponAttackFlow.insertStepBefore("showAttackHUD", "npcAttackTraitReminder")
     }
   }
 );
