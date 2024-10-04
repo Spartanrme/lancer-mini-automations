@@ -41,5 +41,21 @@ Added various additional settings:
 - Toggle for Hurl Into the Duat automation
 - Toggle for chat whispers from the Apply Damage macro.
 
-2.1.1
+2.2.0
 Added additional dropdown to disable whispers on the apply damage macro for NPCs/PCs/both.
+
+2.2.1
+Fixed npc damage reductions not appearing in damage reduction macro
+Added some spacing between the damage input and npc reductions text in the apply damage macro
+
+2.3.0
+Re-organized the settings menu for the apply damage macro, including a new setting for turning on/off the NPC reminders.
+
+2.3.1
+Fixed a bug that prevented being able to use NPC weapons.
+
+2.3.2
+Fixed a bug that prevented npc attacks from going past the HUD.
+
+2.4.0
+Added a new feature: UI reminders when preforming an NPC attack that reminds the GM what traits the NPC has that may affect it's attack (in terms of acc, diff, etc...)
