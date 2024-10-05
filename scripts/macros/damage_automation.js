@@ -102,7 +102,7 @@ async function applyDamage(dmg = 0, type = null, windowCount = 1, windowTotal = 
             let dots = "";
             if(npcReductions[i].length > 150)
                 dots = "..."
-            uiNpcReductions += `<label><span>--` + npcReductions[i].substring(0, 150) + dots + `</span></label><br/>`;
+            uiNpcReductions += `<label><span>--` + npcReductions[i].substring(0, 150) + dots + `<br></span></label> <br>`;
         }
         // Reactions
         let npcReactions = await getNpcDamageReactions(token);
@@ -110,9 +110,9 @@ async function applyDamage(dmg = 0, type = null, windowCount = 1, windowTotal = 
             let dots = "";
             if(npcReactions[i].length > 150)
                 dots = "..."
-            uiNpcReductions += `<label><span>--Reaction: ` + npcReactions[i].substring(0, 150) + dots + `</span></label><br/>`;
+            uiNpcReductions += `<label><span>--Reaction: ` + npcReactions[i].substring(0, 150) + dots + `<br></span></label> <br>`;
         }
-    }else if(canvas.tokens.controlled.length > 1) uiNpcReductions += `<i>Multiple tokens selected</i>`;
+    }else if(canvas.tokens.controlled.length > 1) uiNpcReductions += `<i>Multiple (${canvas.tokens.controlled.length}) tokens selected</i>`;
 
     const htmlFormContent = `<form class="lancer accdiff window-content">
         <div class="flexrow lancer-border-primary" style="padding-bottom: 4px;">

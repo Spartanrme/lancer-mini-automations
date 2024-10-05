@@ -72,7 +72,7 @@ let reactions = [];
             && system.destroyed != true
             && system.type === "Reaction"
             && system.trigger.match(keywords) != null) {
-                reactions.push(system.trigger);
+                reactions.push(system.trigger.replace(/<[^>]*>/g,''));
         }
     });
     return reactions;
@@ -92,7 +92,7 @@ export async function getNpcDamageReductions(token){
 
     // Get all the NPC items
     let items = token.actor.items;
-    let keywords = /Resistance|Immunity/;
+    let keywords = /((The )([^\s]+ )?(has )(Resistance|Immunity))|((After |When(ever)? )(the )?([^\s]+ )?(taking |takes )damage)/;
 
     // Run through each NPC's items
     items.forEach(x =>{
@@ -102,12 +102,11 @@ export async function getNpcDamageReductions(token){
         // 1) It isn't destroyed
         // 2) It is a trait (ignore reactions)
         // 3) It contains one of the items in our keyword
-        console.log(system);
         if(foundry.utils.hasProperty(system, "effect") 
             && system.destroyed != true
             && (system.type === "Trait" || system.type === "System")
             && system.effect.match(keywords) != null) {
-                reductions.push(system.effect);
+                reductions.push(system.effect.replace(/<[^>]*>/g,''));
         }
     });
     return reductions;
