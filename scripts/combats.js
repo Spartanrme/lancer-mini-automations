@@ -1,3 +1,5 @@
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
 /*
 Rolls a die of a user-specified size at the start of each combat round.
 */
@@ -77,4 +79,12 @@ export async function npcAttackTraitReminder(state){
 	atkTraits.forEach(trait =>{
 		ui.notifications.notify(trait)
 	});
+}
+
+/*
+During combat, remind the GM if the NPC has the Heavy Frame or
+other movement-stopping effects.
+*/
+export async function npcMovementReminder(state){
+	
 }

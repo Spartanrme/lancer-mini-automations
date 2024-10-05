@@ -279,7 +279,7 @@ async function applyDamage(dmg = 0, type = null, windowCount = 1, windowTotal = 
             </div>
         </div>`
         let sendMessage = true;
-        let whisperSetting = await game.settings.get('lancer-mini-automations', 'enableApplyDamageWhisper');
+        let whisperSetting = await game.settings.get('lancer-mini-automations', 'whisperType');
         switch(whisperSetting){
             case "all":
                 break;

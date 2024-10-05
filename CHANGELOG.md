@@ -80,3 +80,6 @@ Fixed bug where said setting didn't work.
 
 2.4.6
 Changed the positioning of the NPC damage reactions/reductions to the bottom of the apply damage macro for better formatting.
+
+2.4.7
+Fixed bug where whisper setting for the apply damage macro wasn't applying.
