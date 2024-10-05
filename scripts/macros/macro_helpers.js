@@ -47,7 +47,8 @@ export async function getAliveNpcCount(token){
 }
 
 /*
-This macro runs through an NPCs items and matches (using regex) all items containing reactions.
+Run through an NPC's systems and find Reactions that match
+our given regex.
 */
 export async function getNpcDamageReactions(token){
 let reactions = [];
@@ -78,7 +79,8 @@ let reactions = [];
 }
 
 /*
-This macro runs through an NPCs items and matches (using regex) all items containing reactions.
+Run through an NPC's traits and find Traits that match
+our given regex.
 */
 export async function getNpcDamageReductions(token){
     
@@ -100,9 +102,10 @@ export async function getNpcDamageReductions(token){
         // 1) It isn't destroyed
         // 2) It is a trait (ignore reactions)
         // 3) It contains one of the items in our keyword
+        console.log(system);
         if(foundry.utils.hasProperty(system, "effect") 
             && system.destroyed != true
-            && system.type === "Trait"
+            && (system.type === "Trait" || system.type === "System")
             && system.effect.match(keywords) != null) {
                 reductions.push(system.effect);
         }

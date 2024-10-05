@@ -85,3 +85,6 @@ Changed the positioning of the NPC damage reactions/reductions to the bottom of 
 Fixed a bug where whisper setting for the apply damage macro wasn't applying.
 New Feature: A UI reminder whenever a mech does a HASE roll will display if the mech has any abilities that modify those rolls.
 Added a (user-based) setting to turn the above feature on/off.
+
+2.5.1
+Fixed a bug where NPC Systems would not show up if "Show NPC Damage Reactions/Reductions" was enabled for the Apply Damage macro.
