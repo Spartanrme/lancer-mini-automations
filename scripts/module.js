@@ -2,7 +2,7 @@ import { updateToken, updateTokenCondition, updateTokenOwnership } from "./updat
 import { changeWeaponProfile, invadeEffectsAutomation } from "./attacks.js";
 import { registerSettings } from "./settings.js";
 import { resistHeat } from "./reductions.js";
-import { roundStartRoll, npcAttackTraitReminder } from "./combats.js";
+import { roundStartRoll, npcAttackTraitReminder, npcMovementReminder, haseReminders } from "./combats.js";
 // Macro imports
 import { runLoadoutDie } from "./macros/loadout_die.js";
 import { runStormbendingDie } from "./macros/stormbender_die.js";
@@ -25,11 +25,19 @@ Hooks.once("socketlib.ready", () => {
 Hooks.once("lancer.registerFlows", (flowSteps, flows) => {
   flowSteps.set("changeWeaponProfile", changeWeaponProfile);
   flowSteps.set("npcAttackTraitReminder", npcAttackTraitReminder)
+  flowSteps.set("npcMovementReminder", npcMovementReminder);
+  flowSteps.set("haseReminders", haseReminders);
 
     const weaponAttackFlow = flows.get("WeaponAttackFlow");
-    if (weaponAttackFlow) {
+    const statRollFlow = flows.get("StatRollFlow");
+
+    if (weaponAttackFlow){
       weaponAttackFlow.insertStepBefore("initAttackData", "changeWeaponProfile");
-      weaponAttackFlow.insertStepBefore("showAttackHUD", "npcAttackTraitReminder")
+      weaponAttackFlow.insertStepBefore("showAttackHUD", "npcAttackTraitReminder");
+    }
+
+    if(statRollFlow){
+      statRollFlow.insertStepBefore("showStatRollHUD", "haseReminders");
     }
   }
 );

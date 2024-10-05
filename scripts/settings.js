@@ -233,6 +233,16 @@ export function registerSettings() {
         onChange: value => { console.log(value) }
     });
 
+    game.settings.register('lancer-mini-automations', 'enableHaseReminders', {
+        name: 'Enable HASE Reminders',
+        hint: 'If enabled, gives a UI notification of HASE modifying traits whenever you perform a HASE roll.',
+        scope: 'user',
+        config: true,
+        type: Boolean,
+        default: true,
+        onChange: value => { console.log(value) }
+    });
+
     game.settings.register('lancer-mini-automations', 'enableProfileAutomation', {
         name: 'Enable Weapon Profile Automation',
         hint: 'If a user rolls an attack with a weapon, enables a dropdown that allows the user to switch which profile to attack with.',

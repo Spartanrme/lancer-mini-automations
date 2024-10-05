@@ -88,3 +88,38 @@ other movement-stopping effects.
 export async function npcMovementReminder(state){
 	
 }
+
+/*
+Display a ui reminder whenever a HASE stat is rolled 
+if the mech has an ability that modifies HASE rolls
+*/
+export async function haseReminders(state){
+	const stat = state.data.title.toUpperCase();
+	const isNpc = await state.actor.is_npc();
+
+	// This should match all save/check modifying abilities on both PCs (I manaully checked all of them) and NPCs (used some examples)
+	const keywords = /\+1 (difficulty|accuracy) on (all )?(hull|agility|system|engineering|checks and saves)/i;
+
+	let modTrait;
+	if(isNpc){
+		await state.actor.loadoutHelper.listLoadout().forEach(loadout => {
+			if(foundry.utils.hasProperty(loadout, "system.effect") && loadout.system.effect.match(keywords) != null && loadout.system.effect.toUpperCase().includes(stat)){
+				modTrait = loadout.system.parent.name + ": " + loadout.system.effect;
+			}
+		});
+	}else{
+		await state.actor.loadoutHelper.listLoadout().forEach(loadout => {
+			if(loadout.type.localeCompare("frame") === 0){
+				loadout?.system?.traits.forEach(trait => {
+					if(trait.description.match(keywords) != null && trait.description.toUpperCase().includes(stat)){
+						modTrait = trait.name + ": " + trait.description;
+					}
+				});
+			}
+		});
+	}
+
+	if(await game.settings.get('lancer-mini-automations', 'enableHaseReminders') && modTrait != undefined){
+		ui.notifications.notify(modTrait);
+	}
+}
