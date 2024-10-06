@@ -64,7 +64,7 @@
   "packs": [
     {
       "name": "lancer-mini-automation-macros",
-      "label": "Lancer-Mini-Automation-Macros",
+      "label": "LMA-Macros",
       "path": "packs/lancer-mini-automation-macros",
       "type": "Macro",
       "system": "lancer",
@@ -75,7 +75,7 @@
     },
     {
       "name": "lancer-mini-automation-statuses",
-      "label": "Lancer-Mini-Automation-Statuses",
+      "label": "LMA-Extra-Statuses",
       "path": "packs/lancer-mini-automation-statuses",
       "type": "Item",
       "ownership": {
