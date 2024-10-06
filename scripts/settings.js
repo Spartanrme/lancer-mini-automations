@@ -93,7 +93,6 @@ export function registerSettings() {
 
     game.settings.register('lancer-mini-automations', 'roundStartEnable', {
         name: 'Enable Round Start Automation',
-        hint: 'Automates rolling a die of a specified size at each round start during combat.',
         scope: 'world',
         config: false,
         type: Boolean,
@@ -102,7 +101,6 @@ export function registerSettings() {
 
     game.settings.register('lancer-mini-automations', 'roundStartRollName', {
         name: 'Roll Name',
-        hint: 'The name that will appear in the chat message for the roll.',
         scope: 'world',
         config: false,
         type: String,
@@ -111,7 +109,6 @@ export function registerSettings() {
 
     game.settings.register('lancer-mini-automations', 'roundStartDieSize', {
         name: 'Die Size',
-        hint: 'The size of the die to roll.',
         scope: 'world',
         config: false,
         type: Number,
@@ -120,7 +117,6 @@ export function registerSettings() {
 
     game.settings.register('lancer-mini-automations', 'roundStartSuccessRange', {
         name: 'Success Range',
-        hint: '(WIP) The target number to consider the roll a success.',
         scope: 'world',
         config: false,
         type: Number,
@@ -174,7 +170,6 @@ export function registerSettings() {
     game.settings.registerMenu('lancer-mini-automations', 'applyDamageMenu', {
         name: 'Apply Damage Menu',
         label: "Apply Damage Settings",
-        hint: "Change settings related to the Apply Damage macro.",
         icon: "fas fa-bars",
         type: applyDamageFormApplication,
         restricted: true
@@ -214,7 +209,7 @@ export function registerSettings() {
     //#endregion
 
     game.settings.register('lancer-mini-automations', 'enableResistHeatAutomation', {
-        name: 'Enable Resist Heat Automation',
+        name: 'Resist Heat Status Automation',
         hint: 'If a token has the status with an id named "resist_heat", halves the heat updated to the token.',
         scope: 'world',
         config: true,
@@ -224,8 +219,8 @@ export function registerSettings() {
     });
 
     game.settings.register('lancer-mini-automations', 'enableNPCTraitReminders', {
-        name: 'Enable NPC Trait Reminders',
-        hint: 'If enabled, gives a UI notification for the GM during active combat of NPC traits related to attacking when attacking with a weapon.',
+        name: 'Display NPC Trait Reminders',
+        hint: 'If checked, gives a UI notification for the GM during active combat of NPC traits related to attacking when attacking with a weapon.',
         scope: 'world',
         config: true,
         type: Boolean,
@@ -234,8 +229,8 @@ export function registerSettings() {
     });
 
     game.settings.register('lancer-mini-automations', 'enableHaseReminders', {
-        name: 'Enable HASE Reminders',
-        hint: 'If enabled, gives a UI notification of HASE modifying traits whenever you perform a HASE roll.',
+        name: 'Display HASE Reminders',
+        hint: 'If checked, gives a UI notification of HASE modifying traits whenever you perform a HASE roll.',
         scope: 'user',
         config: true,
         type: Boolean,

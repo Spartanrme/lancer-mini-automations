@@ -100,3 +100,6 @@ Iconoclast Macro: Added a dialog prompt to confirm if the user wants to enter tr
 
 2.5.4  
 Update names of compendium packs so that they don't get cut off.  
+
+2.5.5  
+Future cleaned up wording on various status menu items.
