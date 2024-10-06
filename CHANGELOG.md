@@ -97,3 +97,6 @@ After some feedback, updated the wording on some of the language in the setting 
 Updated the NPC trait reminder to catch more traits, including reactions.  
 Updated NPC Reminders macro to capture more triggers.  
 Iconoclast Macro: Added a dialog prompt to confirm if the user wants to enter transcendence.  
+
+2.5.4  
+Update names of compendium packs so that they don't get cut off.  
