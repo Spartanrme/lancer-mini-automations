@@ -82,14 +82,6 @@ export async function npcAttackTraitReminder(state){
 }
 
 /*
-During combat, remind the GM if the NPC has the Heavy Frame or
-other movement-stopping effects.
-*/
-export async function npcMovementReminder(state){
-	
-}
-
-/*
 Display a ui reminder whenever a HASE stat is rolled 
 if the mech has an ability that modifies HASE rolls
 */
