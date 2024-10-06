@@ -1,5 +1,6 @@
 import { getAliveNpcCount } from "./macro_helpers.js";
 
+// TODO: ADD DIALOG FOR TRANSCENDING
 export async function runIconoclastDie(){
     // Cancel the macro if no token is selected
     if(canvas.tokens.controlled.length != 1)
@@ -296,10 +297,18 @@ export async function runIconoclastDie(){
             count--;
             await EffectCounter.findCounter(token, diePath).setValue(count);
         }else if(!token.document.hasStatusEffect(transId)){
-            // Apply Transcendence
-            count = 3;
-            await EffectCounter.findCounter(token, diePath).setValue(count);
-            await socket.executeAsGM("updateTokenCondition", token.id, transId, false);
+            // Ask to apply Transcendence
+            const confirmation = await Dialog.confirm({
+                content: `<p><span class=horus--subtle><i>Transcend?</i></span></p>`,
+                title: "Transcend Confirmation"
+            });
+            
+            if (confirmation){
+                // Apply Transcendence
+                count = 3;
+                await EffectCounter.findCounter(token, diePath).setValue(count);
+                await socket.executeAsGM("updateTokenCondition", token.id, transId, false);
+            }
         }
     }
 

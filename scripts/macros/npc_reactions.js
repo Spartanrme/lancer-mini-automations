@@ -1,7 +1,7 @@
 // This macro opens up a window with a list of all unique npc reactions that contain certain keywords, and their effects and associated NPC.
 export async function displayNpcReactions(){
     // The keywords to search for in triggers
-    let keywords = /allied|ally|move/;
+    const keywords = /An attack hits (the|an) ([^\s]+)|The (.)*((takes|is) damage|is hit (by|with))|(.)* hits with/;
     const shfitHeld = game.keyboard.isModifierActive(KeyboardManager.MODIFIER_KEYS.SHIFT);
     if(shfitHeld) keywords = /./;
 
@@ -33,7 +33,8 @@ export async function displayNpcReactions(){
                 if(foundry.utils.hasProperty(system, "trigger") 
                     && system.destroyed != true
                     && system.type === "Reaction"
-                    && system.trigger.match(keywords) != null) {
+                    && system.trigger != ""
+                    && system.trigger.match(keywords) === null) {
                         if(isGm || scanList.some(x => x.name.includes(actor.name) === true)){
                             reactions.set((actor.name + ": " + system.trigger), system.effect);
                         }

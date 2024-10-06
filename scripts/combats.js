@@ -63,14 +63,21 @@ export async function npcAttackTraitReminder(state){
 		|| await game.settings.get('lancer-mini-automations', 'enableNPCTraitReminders') === false)
 			return;
 
-	const keywords = /on attacks when|on attacks against|on all attacks|on all subsequent attacks|makes a successful attack|successfully attacked|attacks with|attacks deal|ignores Hidden|bonus damage|^Against characters|^When the/;
+	const keywords = /on (all )?(subsequent )?attacks(when |against )?|(successfully |makes a successful )attack|attacks (with|deal)|ignores Hidden|bonus damage|The ([^\s]+) hits with a|^Against characters|when the ([^\s]+ )?(hits|attacks|makes a ([^\s]+)? attack)/i;
 
 	// We can get the NPC through the state
 	let atkTraits = [];
 	let allTraits = await state.actor.loadoutHelper.listLoadout();
 	allTraits.forEach(trait => {
-		if(trait.type?.localeCompare("npc_feature") === 0 && trait.system?.type?.localeCompare("Trait") === 0){
-			let traitEffect = trait.system.effect?.replace(/<[^>]*>/g,'');
+		if(trait.type?.localeCompare("npc_feature") === 0 && (trait.system?.type?.localeCompare("Trait") === 0 
+															|| trait.system?.type?.localeCompare("System") === 0
+															|| trait.system?.type?.localeCompare("Reaction") === 0)){
+			let traitEffect;
+			if(trait.system?.type?.localeCompare("Reaction") === 0){
+				traitEffect = trait.system.trigger?.replace(/<[^>]*>/g,'');
+			}else{
+				traitEffect = trait.system.effect?.replace(/<[^>]*>/g,'');
+			}
 			if(traitEffect?.match(keywords) != null){
 				atkTraits.push(trait.name + ": " + traitEffect);
 			}

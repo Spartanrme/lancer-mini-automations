@@ -59,7 +59,7 @@ let reactions = [];
 
     // Get all the NPC items
     let items = token.actor.items;
-    let keywords = /Hit|Hits|Damage|Damages/i;
+    const keywords = /An attack hits (the|an) ([^\s]+)|The (.)*((takes|is) damage|is hit (by|with))/i;
 
     // Run through each NPC's items
     items.forEach(x =>{
@@ -92,7 +92,7 @@ export async function getNpcDamageReductions(token){
 
     // Get all the NPC items
     let items = token.actor.items;
-    let keywords = /((The )([^\s]+ )?(has )(Resistance|Immunity))|((After |When(ever)? )(the )?([^\s]+ )?(taking |takes )damage)/;
+    const keywords = /((The )([^\s]+ )?(has )(Resistance|Immunity))|((After |When(ever)? )(the )?([^\s]+ )?(taking |takes )damage)/;
 
     // Run through each NPC's items
     items.forEach(x =>{
