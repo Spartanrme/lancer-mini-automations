@@ -91,3 +91,9 @@ Fixed a bug where NPC Systems would not show up if "Show NPC Damage Reactions/Re
 
 2.5.2  
 Modified the Apply Damage macro to capture more NPC traits and systems. Also increased the spacing between each feature in the Apply Damage macro dialog.
+
+2.5.3  
+After some feedback, updated the wording on some of the language in the setting menu for better clarity.  
+Updated the NPC trait reminder to catch more traits, including reactions.  
+Updated NPC Reminders macro to capture more triggers.  
+Iconoclast Macro: Added a dialog prompt to confirm if the user wants to enter transcendence.  
