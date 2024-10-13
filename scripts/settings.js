@@ -208,13 +208,13 @@ export function registerSettings() {
     });
     //#endregion
 
-    game.settings.register('lancer-mini-automations', 'enableResistHeatAutomation', {
-        name: 'Resist Heat Status Automation',
-        hint: 'If a token has the status with an id named "resist_heat", halves the heat updated to the token.',
+    game.settings.register('lancer-mini-automations', 'modulateHeatAmount', {
+        name: 'Heat Modifications',
+        hint: 'Specify a number to add to token\'s heat values whenever they are updated. Example: If you specify "-1", this module will add -1 to all heat that is added to tokens This is useful if you have a combat that has an environment that modifies heat.',
         scope: 'world',
         config: true,
-        type: Boolean,
-        default: true,
+        type: Number,
+        default: 0,
         onChange: value => { console.log(value) }
     });
 

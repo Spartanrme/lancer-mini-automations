@@ -103,3 +103,6 @@ Update names of compendium packs so that they don't get cut off.
 
 2.5.5  
 Future cleaned up wording on various status menu items.
+
+2.6.0
+Updated the resist heat functionality. Statuses with the id "resist_heat" the module will always apply half heat to. Added a new setting to specify a number to add to any updates to heat.
