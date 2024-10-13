@@ -1,5 +1,9 @@
 import { getSpeaker } from "./macro_helpers.js";
 
+/**
+ * Runs the Loadout Die macro
+ * See: https://github.com/Spartanrme/lancer-mini-automations/wiki#loadout-dice
+ */
 export async function runLoadoutDie(){
     // Cancel the macro if no token is selected
     if(canvas.tokens.controlled.length != 1)

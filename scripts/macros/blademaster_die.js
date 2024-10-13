@@ -1,5 +1,9 @@
 import { getSpeaker } from "./macro_helpers.js";
 
+/**
+ * Runs the Blademaster die macro.
+ * See: https://github.com/Spartanrme/lancer-mini-automations/wiki#blademaster-dice
+ */
 export async function runBlademasterDie(){
     // Cancel the macro if no token is selected
     const token = canvas.tokens.controlled[0];

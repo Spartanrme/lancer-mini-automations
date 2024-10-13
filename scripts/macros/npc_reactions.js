@@ -1,4 +1,6 @@
-// This macro opens up a window with a list of all unique npc reactions that contain certain keywords, and their effects and associated NPC.
+/**
+ * This macro opens up a window with a list of all unique npc reactions that contain certain keywords, and their effects and associated NPC.
+ */
 export async function displayNpcReactions(){
     // The keywords to search for in triggers
     const keywords = /An attack hits (the|an) ([^\s]+)|The (.)*((takes|is) damage|is hit (by|with))|(.)* hits with/;

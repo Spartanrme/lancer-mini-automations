@@ -1,6 +1,9 @@
 import { getAliveNpcCount } from "./macro_helpers.js";
 
-// TODO: ADD DIALOG FOR TRANSCENDING
+/**
+ * Runs the Iconoclast macro.
+ * See: https://github.com/Spartanrme/lancer-mini-automations/wiki#iconoclast-3-dice
+ */
 export async function runIconoclastDie(){
     // Cancel the macro if no token is selected
     if(canvas.tokens.controlled.length != 1)

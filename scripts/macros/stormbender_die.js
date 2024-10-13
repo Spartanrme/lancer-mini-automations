@@ -1,5 +1,9 @@
 import { getSpeaker } from "./macro_helpers.js";
 
+/**
+ * Runs the Stormbending Macro
+ * See: https://github.com/Spartanrme/lancer-mini-automations/wiki#stormbending-dice
+ */
 export async function runStormbendingDie(){
     // Cancel the macro if no token is selected
     if(canvas.tokens.controlled.length != 1)

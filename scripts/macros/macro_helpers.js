@@ -1,11 +1,13 @@
-// This macro returns the actor that a player is speaking as (what they have selected) if they have permissions to it, or themselves if they have nothing selected. This macro is meant to be run within the ChatMessage method:
-/*
-EXAMPLE:
-ChatMessage.create({
-    speaker: ChatMessage.getSpeaker({
-    actor: game.macros.getName("Get-Speaker").execute()
-}),
-*/
+/**
+ * This macro returns the actor that a player is speaking as (what they have selected) if they have permissions to it, 
+ * or themselves if they have nothing selected. This macro is meant to be run within the ChatMessage method:
+ * EXAMPLE:
+    ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({
+        actor: game.macros.getName("Get-Speaker").execute()
+    }),
+ * @returns {object} An actor object
+ */
 export async function getSpeaker(){
     try{
         let ownerObject = await canvas.tokens.controlled[0].actor.ownership
@@ -33,6 +35,11 @@ export async function getSpeaker(){
     }
 }
 
+/**
+ * Runs through a token's actor document and counts the number of systems with the name 'NHP'.
+ * @param {object} token The token object on the canvas 
+ * @returns {int} The NHP count
+ */
 export async function getAliveNpcCount(token){
     let count = 0;
 
@@ -46,10 +53,11 @@ export async function getAliveNpcCount(token){
     return count;
 }
 
-/*
-Run through an NPC's systems and find Reactions that match
-our given regex.
-*/
+/**
+ * Run through an NPC's systems and find Reactions that match our given regex.
+ * @param {object} token The token object on the canvas 
+ * @returns {(object|Array)} An array of NPC systems
+ */
 export async function getNpcDamageReactions(token){
 let reactions = [];
     // Exit if nothing is selected or if the token type isn't 'npc'
@@ -78,10 +86,11 @@ let reactions = [];
     return reactions;
 }
 
-/*
-Run through an NPC's traits and find Traits that match
-our given regex.
-*/
+/**
+ * Run through an NPC's traits and find Traits that match our given regex.
+ * @param {object} token The token object on the canvas 
+ * @returns {(object|Array)} An array of NPC systems
+ */
 export async function getNpcDamageReductions(token){
     
     let reductions = [];
@@ -112,7 +121,13 @@ export async function getNpcDamageReductions(token){
     return reductions;
 }
 
-export async function getTalentRank(talentName){
+/**
+ * Gets the rank (0 - 3) of a talent for a selected token
+ * @param {string} talentName The name of the talent to search for
+ * @param {object} token The token object on the canvas 
+ * @returns {int}
+ */
+export async function getTalentRank(talentName, token){
     if(canvas.tokens.controlled.length !=  1)
         return ui.notifications.info("Please select only one token!");
 

@@ -1,3 +1,10 @@
+/**
+ * Runs the Hurl Into the Duat macro.
+ * See https://github.com/Spartanrme/lancer-mini-automations/wiki#hurl-into-the-duat
+ * @param {object} state The state from the 'lancer.postFlow.TechAttackFlow' hook 
+ * @param {object} socket The socket registered in module.js
+ * @returns true if the macro ran with success, false otherwise
+ */
 export async function runDuatDie(state, socket){
     if(await game.settings.get('lancer-mini-automations', 'enableDuatAutomation') === false){
         return false;
@@ -121,4 +128,5 @@ export async function runDuatDie(state, socket){
                     </div>
                 </div>`
     ChatMessage.create({ content: msgContent });   
+    return true;
 }
