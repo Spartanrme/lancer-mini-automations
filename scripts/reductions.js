@@ -16,18 +16,27 @@ export async function resistHeat(state, updates){
 	let updateHeat = updates.system.heat.value;
 	// Get how much the heat was updated by
 	let tempHeat = updateHeat - currentHeat;
-	// Don't reduce
+	// Don't reduce if there is no or negative change
 	if(tempHeat <= 0){
 		return false;
 	}else{
 		// Add modulations first, then any resistances
-		tempHeat += modAmount;
+		updateHeat += modAmount;
+		// if we've reduced the updateHeat to <= 0, set to zero and return
+		if(updateHeat <= 0){
+			ui.notifications.notify("Mini-Automation: Reduced heat gained by " + Math.abs(modAmount));
+			updates.system.heat.value = 0;
+			return true;
+		}
+		// Notify user of heat increases (not 0)
+		if(modAmount > 0)
+			ui.notifications.notify("Mini-Automation: Increased heat gained by " + modAmount);
+		else if(modAmount < 0)
+			ui.notifications.notify("Mini-Automation: Reduced heat gained by " + Math.abs(modAmount));
 		// Half the heat round up
 		if(resistHeat)
-			tempHeat = Math.ceil(tempHeat / 2);
-		// Add to current heat
-		tempHeat += currentHeat;
+			updateHeat = Math.ceil(updateHeat / 2);
 	}
-	updates.system.heat.value = tempHeat;
+	updates.system.heat.value = updateHeat;
 	return true;
 }
