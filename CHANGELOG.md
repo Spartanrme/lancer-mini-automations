@@ -104,11 +104,14 @@ Update names of compendium packs so that they don't get cut off.
 2.5.5  
 Future cleaned up wording on various status menu items.
 
-2.6.0
+2.6.0  
 Updated the resist heat functionality. Statuses with the id "resist_heat" the module will always apply half heat to. Added a new setting to specify a number to add to any updates to heat.
 
-2.6.1
+2.6.1  
 Updated the logic of heat modifications to better take care of edge cases. Added a UI notification whenever a token's heat update is modified.
 
-2.6.2
+2.6.2  
 Fixed a but that would reduce total heat updates to zero if heat modifications was greater than heat gained.
+
+2.6.3  
+Fixed a bug where holding shift to display all NPC reactions in the NPC reaction macro would crash the macro.

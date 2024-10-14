@@ -3,7 +3,7 @@
  */
 export async function displayNpcReactions(){
     // The keywords to search for in triggers
-    const keywords = /An attack hits (the|an) ([^\s]+)|The (.)*((takes|is) damage|is hit (by|with))|(.)* hits with/;
+    let keywords = /An attack hits (the|an) ([^\s]+)|The (.)*((takes|is) damage|is hit (by|with))|(.)* hits with/;
     const shfitHeld = game.keyboard.isModifierActive(KeyboardManager.MODIFIER_KEYS.SHIFT);
     if(shfitHeld) keywords = /./;
 
