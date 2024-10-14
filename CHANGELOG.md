@@ -109,3 +109,6 @@ Updated the resist heat functionality. Statuses with the id "resist_heat" the mo
 
 2.6.1
 Updated the logic of heat modifications to better take care of edge cases. Added a UI notification whenever a token's heat update is modified.
+
+2.6.2
+Fixed a but that would reduce total heat updates to zero if heat modifications was greater than heat gained.

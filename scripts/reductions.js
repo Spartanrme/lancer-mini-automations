@@ -22,10 +22,10 @@ export async function resistHeat(state, updates){
 	}else{
 		// Add modulations first, then any resistances
 		updateHeat += modAmount;
-		// if we've reduced the updateHeat to <= 0, set to zero and return
+		// if we've reduced the updateHeat to <= 0, don't change heat
 		if(updateHeat <= 0){
 			ui.notifications.notify("Mini-Automation: Reduced heat gained by " + Math.abs(modAmount));
-			updates.system.heat.value = 0;
+			updates.system.heat.value = currentHeat;
 			return true;
 		}
 		// Notify user of heat increases (not 0)
