@@ -122,3 +122,13 @@ export async function haseReminders(state){
 		ui.notifications.notify(modTrait);
 	}
 }
+
+/**
+ * Checks for chats that mention "saves". When it 
+ * finds one, determines the type of save and who
+ * instigated it. The function then outputs a button
+ * to chat that has the save target of the pc/npc.
+ */
+export async function saveReminder(state){
+	
+}
