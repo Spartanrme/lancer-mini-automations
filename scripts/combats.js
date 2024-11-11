@@ -124,6 +124,13 @@ export async function haseReminders(state){
 }
 
 /**
+ * Ram rules text reminder
+ */
+export async function ramReminder(state){
+	ui.notifications.notify("Reminder: Ram (by default) only works on equal size or smaller.");
+}
+
+/**
  * Checks for chats that mention "saves". When it 
  * finds one, determines the type of save and who
  * instigated it. The function then outputs a button

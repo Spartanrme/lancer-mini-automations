@@ -2,7 +2,7 @@ import { updateToken, updateTokenCondition, updateTokenOwnership } from "./updat
 import { changeWeaponProfile, invadeEffectsAutomation } from "./attacks.js";
 import { registerSettings } from "./settings.js";
 import { resistHeat } from "./reductions.js";
-import { roundStartRoll, npcAttackTraitReminder, haseReminders, saveReminder } from "./combats.js";
+import { roundStartRoll, npcAttackTraitReminder, haseReminders, ramReminder, saveReminder } from "./combats.js";
 // Macro imports
 import { runLoadoutDie } from "./macros/loadout_die.js";
 import { runStormbendingDie } from "./macros/stormbender_die.js";
@@ -10,9 +10,13 @@ import { runIconoclastDie } from "./macros/iconoclast_die.js";
 import { runDuatDie } from "./macros/duat_die.js";
 import { runBlademasterDie } from "./macros/blademaster_die.js";
 import { displayNpcReactions } from "./macros/npc_reactions.js";
-import { autoApplyDamage } from "./macros/damage_automation.js";
 
 let socket; // pass this to functions that require users to request GM to update tokens
+
+async function NotifyGm(message){
+  if(game.user.isGM)
+    ui.notifications.notify(message);
+}
 
 Hooks.once("socketlib.ready", () => {
   console.log('lancer-mini-automations | Registering Sockets');
@@ -20,15 +24,18 @@ Hooks.once("socketlib.ready", () => {
 	socket.register("updateToken", updateToken);
 	socket.register("updateTokenOwnership", updateTokenOwnership);
   socket.register("updateTokenCondition", updateTokenCondition);
+  socket.register("NotifyGm", NotifyGm);
 });
 
 Hooks.once("lancer.registerFlows", (flowSteps, flows) => {
   flowSteps.set("changeWeaponProfile", changeWeaponProfile);
   flowSteps.set("npcAttackTraitReminder", npcAttackTraitReminder)
   flowSteps.set("haseReminders", haseReminders);
+  flowSteps.set("ramReminder", ramReminder);
 
     const weaponAttackFlow = flows.get("WeaponAttackFlow");
     const statRollFlow = flows.get("StatRollFlow");
+    const basicAttackRoll = flows.get("BasicAttackFlow");
 
     if (weaponAttackFlow){
       weaponAttackFlow.insertStepBefore("initAttackData", "changeWeaponProfile");
@@ -37,6 +44,10 @@ Hooks.once("lancer.registerFlows", (flowSteps, flows) => {
 
     if(statRollFlow){
       statRollFlow.insertStepBefore("showStatRollHUD", "haseReminders");
+    }
+
+    if(basicAttackRoll){
+      basicAttackRoll.insertStepBefore("showAttackHUD", "ramReminder");
     }
   }
 );
@@ -54,9 +65,8 @@ Hooks.on('ready', function () {
       runStormbendingDie,
       runIconoclastDie,
       runBlademasterDie,
-      displayNpcReactions,
-      autoApplyDamage
-  };
+      displayNpcReactions
+    };
 });
 
 Hooks.on("lancer.postFlow.TechAttackFlow", async (state) => invadeEffectsAutomation(state, socket));

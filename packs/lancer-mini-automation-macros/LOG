@@ -1,5 +1,5 @@
-2024/09/28-22:31:33.234 3508 Recovering log #24
-2024/09/28-22:31:33.234 3508 Level-0 table #26: started
-2024/09/28-22:31:33.235 3508 Level-0 table #26: 2166 bytes OK
-2024/09/28-22:31:33.237 3508 Delete type=0 #24
-2024/09/28-22:31:33.237 3508 Delete type=3 #23
+2024/11/10-19:46:52.367 6fec Recovering log #27
+2024/11/10-19:46:52.368 6fec Level-0 table #29: started
+2024/11/10-19:46:52.369 6fec Level-0 table #29: 343 bytes OK
+2024/11/10-19:46:52.372 6fec Delete type=0 #27
+2024/11/10-19:46:52.372 6fec Delete type=3 #25
