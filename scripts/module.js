@@ -10,7 +10,6 @@ import { runIconoclastDie } from "./macros/iconoclast_die.js";
 import { runDuatDie } from "./macros/duat_die.js";
 import { runBlademasterDie } from "./macros/blademaster_die.js";
 import { displayNpcReactions } from "./macros/npc_reactions.js";
-import { autoApplyDamage } from "./macros/damage_automation.js";
 
 let socket; // pass this to functions that require users to request GM to update tokens
 
