@@ -54,9 +54,8 @@ Hooks.on('ready', function () {
       runStormbendingDie,
       runIconoclastDie,
       runBlademasterDie,
-      displayNpcReactions,
-      autoApplyDamage
-  };
+      displayNpcReactions
+    };
 });
 
 Hooks.on("lancer.postFlow.TechAttackFlow", async (state) => invadeEffectsAutomation(state, socket));
