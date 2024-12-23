@@ -1,5 +1,8 @@
-// Update "token" based on args
-// args: a tuple [string, number] where string is the update path and number is the update value
+/**
+ * Update "token" based on args
+ * @param {number} tokenId 
+ * @param {string, number} args 
+ */
 export async function updateToken(tokenId, args){
     // Nothing to update
     if(args === null){
@@ -16,6 +19,11 @@ export async function updateToken(tokenId, args){
     });
 }
 
+/**
+ * Updates which player has ownership of a token.
+ * @param {number} tokenId 
+ * @param {object} owner 
+ */
 export async function updateTokenOwnership(tokenId, owner){
     // Get token
     let target = await canvas.tokens.placeables.find(x => x.id === tokenId);
@@ -32,6 +40,12 @@ export async function updateTokenOwnership(tokenId, owner){
     }
 }
 
+/**
+ * Add or replaces a token's condition.
+ * @param {number} tokenId 
+ * @param {number} conditionId 
+ * @param {bool} replace 
+ */
 export async function updateTokenCondition(tokenId, conditionId, replace = false){
     // Find the effect
     const effect = CONFIG.statusEffects.find(e => e.id === conditionId);

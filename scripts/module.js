@@ -31,7 +31,6 @@ Hooks.once("lancer.registerFlows", (flowSteps, flows) => {
   flowSteps.set("changeWeaponProfile", changeWeaponProfile);
   flowSteps.set("npcAttackTraitReminder", npcAttackTraitReminder)
   flowSteps.set("haseReminders", haseReminders);
-  flowSteps.set("ramReminder", ramReminder);
 
     const weaponAttackFlow = flows.get("WeaponAttackFlow");
     const statRollFlow = flows.get("StatRollFlow");
