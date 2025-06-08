@@ -4,8 +4,8 @@
   "socket": true,
   "version": "#{VERSION}#",
   "compatibility": {
-    "minimum": "11",
-    "verified": "11",
+    "minimum": "12",
+    "verified": "12",
     "maximum": "12"
   },
   "relationships": {

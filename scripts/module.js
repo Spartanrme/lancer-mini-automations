@@ -2,7 +2,7 @@ import { updateToken, updateTokenCondition, updateTokenOwnership } from "./updat
 import { changeWeaponProfile, invadeEffectsAutomation } from "./attacks.js";
 import { registerSettings } from "./settings.js";
 import { resistHeat } from "./reductions.js";
-import { roundStartRoll, npcAttackTraitReminder, haseReminders, ramReminder, saveReminder } from "./combats.js";
+import { roundStartRoll, npcAttackTraitReminder, haseReminders } from "./combats.js";
 // Macro imports
 import { runLoadoutDie } from "./macros/loadout_die.js";
 import { runStormbendingDie } from "./macros/stormbender_die.js";

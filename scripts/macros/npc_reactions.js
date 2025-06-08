@@ -3,7 +3,7 @@
  */
 export async function displayNpcReactions(){
     // The keywords to search for in triggers
-    let keywords = /An attack hits (the|an) ([^\s]+)|The (.)*((takes|is) damage|is hit (by|with))|(.)* hits with/;
+    let keywords = /An attack hits (the|an) ([^\s]+)|The (.)*((takes|is) damage|is hit (by|with))|(.)* hits with|hits the (.)*/;
     const shfitHeld = game.keyboard.isModifierActive(KeyboardManager.MODIFIER_KEYS.SHIFT);
     if(shfitHeld) keywords = /./;
 
@@ -36,7 +36,7 @@ export async function displayNpcReactions(){
                     && system.destroyed != true
                     && system.type === "Reaction"
                     && system.trigger != ""
-                    && system.trigger.match(keywords) === null) {
+                    && system.trigger.match(keywords) != null) {
                         if(isGm || scanList.some(x => x.name.includes(actor.name) === true)){
                             reactions.set((actor.name + ": " + system.trigger), system.effect);
                         }
